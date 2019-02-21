@@ -9,7 +9,7 @@ public class PhotoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "path")
     private String path;
@@ -19,11 +19,11 @@ public class PhotoEntity {
     private AlbumEntity albumId;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

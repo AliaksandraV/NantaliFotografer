@@ -10,7 +10,11 @@ public class PhotoCategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "localized_name_id")
+    private LocalizedTextEntity localizedName;
 
     @Column(name = "cover_image_path")
     private String coverImagePath;
@@ -19,12 +23,21 @@ public class PhotoCategoryEntity {
     private List<AlbumEntity> albumList;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+
+    public LocalizedTextEntity getLocalizedName() {
+        return localizedName;
+    }
+
+    public void setLocalizedName(LocalizedTextEntity localizedName) {
+        this.localizedName = localizedName;
     }
 
 

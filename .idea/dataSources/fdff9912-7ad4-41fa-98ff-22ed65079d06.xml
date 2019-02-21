@@ -938,30 +938,28 @@
     </table>
     <column id="238" parent="233" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="233" name="localized_name_id">
+    <column id="239" parent="233" name="date">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="233" name="date">
+    <column id="240" parent="233" name="localized_name_id">
       <Position>3</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="241" parent="233" name="photo_category_id">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="242" parent="233" name="FK_album_localized_string">
+    <index id="242" parent="233" name="FK_album_localized_text">
       <ColNames>localized_name_id</ColNames>
     </index>
     <index id="243" parent="233" name="FK_album_photo_category">
@@ -972,7 +970,7 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="245" parent="233" name="FK_album_localized_string">
+    <foreign-key id="245" parent="233" name="FK_album_localized_text">
       <ColNames>localized_name_id</ColNames>
       <RefSchemaName>nantalifotografer</RefSchemaName>
       <RefTableName>localized_text</RefTableName>
@@ -986,7 +984,7 @@
     </foreign-key>
     <column id="247" parent="234" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1014,24 +1012,23 @@
     </key>
     <column id="252" parent="235" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="253" parent="235" name="path">
       <Position>2</Position>
-      <DataType>varchar(512)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="254" parent="235" name="album_id">
       <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="255" parent="235" name="FK_foto_album">
+    <index id="255" parent="235" name="FKpy64km2p72eoy5rwh31ria0vx">
       <ColNames>album_id</ColNames>
     </index>
     <key id="256" parent="235" name="PRIMARY">
@@ -1039,7 +1036,7 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="257" parent="235" name="FK_foto_album">
+    <foreign-key id="257" parent="235" name="FKpy64km2p72eoy5rwh31ria0vx">
       <ColNames>album_id</ColNames>
       <RefSchemaName>nantalifotografer</RefSchemaName>
       <RefTableName>album</RefTableName>
@@ -1047,22 +1044,19 @@
     </foreign-key>
     <column id="258" parent="236" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="236" name="localized_name_id">
+    <column id="259" parent="236" name="cover_image_path">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="236" name="cover_image_path">
+    <column id="260" parent="236" name="localized_name_id">
       <Position>3</Position>
-      <DataType>varchar(128)|0s</DataType>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="261" parent="236" name="FK_photo_category_localized_text">
@@ -1081,29 +1075,20 @@
     </foreign-key>
     <column id="264" parent="237" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="265" parent="237" name="name">
       <Position>2</Position>
-      <DataType>varchar(128)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="237" name="name">
-      <ColNames>name</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="267" parent="237" name="PRIMARY">
+    <key id="266" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
-    </key>
-    <key id="268" parent="237" name="name">
-      <ColNames>name</ColNames>
-      <UnderlyingIndexName>name</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

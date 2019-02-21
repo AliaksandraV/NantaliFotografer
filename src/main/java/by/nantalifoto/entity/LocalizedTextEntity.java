@@ -9,7 +9,7 @@ public class LocalizedTextEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "russian")
     private String russian;
@@ -20,18 +20,12 @@ public class LocalizedTextEntity {
     @Column(name = "german")
     private String german;
 
-    /**
-     * Правильно ли это?
-     * */
-    @OneToOne(mappedBy = "localizedName" )
-    private AlbumEntity album;
 
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -62,16 +56,6 @@ public class LocalizedTextEntity {
         this.german = german;
     }
 
-
-    public AlbumEntity getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(AlbumEntity album) {
-        this.album = album;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,14 +64,13 @@ public class LocalizedTextEntity {
         return id == that.id &&
                 Objects.equals(russian, that.russian) &&
                 Objects.equals(english, that.english) &&
-                Objects.equals(german, that.german) &&
-                Objects.equals(album, that.album);
+                Objects.equals(german, that.german) ;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, russian, english, german, album);
+        return Objects.hash(id, russian, english, german);
     }
 
     @Override
@@ -97,7 +80,6 @@ public class LocalizedTextEntity {
                 ", russian='" + russian + '\'' +
                 ", english='" + english + '\'' +
                 ", german='" + german + '\'' +
-                ", album=" + album +
                 '}';
     }
 }

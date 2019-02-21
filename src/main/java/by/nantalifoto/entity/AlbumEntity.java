@@ -11,7 +11,7 @@ public class AlbumEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "localized_name_id")
@@ -25,15 +25,17 @@ public class AlbumEntity {
     @JoinColumn(name = "photo_category_id", nullable = false)
     private PhotoCategoryEntity photoCategory;
 
+    //todo Настройка orphanRemoval=true переводится с английского — "удалять сирот".
+    //todo Если мы удалим из БД — все связанные с ним также будут удалены. Надо подумать нужно ли это указывать
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "albumId")
     private List<PhotoEntity> photo;
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
