@@ -1,6 +1,6 @@
 package by.nantalifoto.dao;
 
-import by.nantalifoto.entity.RoleEntity;
+import by.nantalifoto.entity.AlbumEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,45 +10,43 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class RoleDaoImp implements RoleDao {
+public class AlbumDaoImpl implements AlbumDao {
 
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public RoleDaoImp(SessionFactory sessionFactory) {
+    public AlbumDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public void add(RoleEntity role){
-        Session session = sessionFactory.getCurrentSession();
-        session.save(role);
+    public void add(AlbumEntity album) {
+        sessionFactory.getCurrentSession().save(album);
     }
 
     @Override
-    public void update(RoleEntity role) {
+    public void update(AlbumEntity album) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(role);
+        session.update(album);
     }
 
     @Override
     public void delete(long id) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(session.get(RoleEntity.class, id));
+        session.delete(session.get(AlbumEntity.class, id));
     }
 
     @Override
-    public RoleEntity get(long id) {
-        return sessionFactory.getCurrentSession().get(RoleEntity.class, id);
+    public AlbumEntity get(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(AlbumEntity.class, id);
     }
 
     @Override
-    public List<RoleEntity> list() {
+    public List<AlbumEntity> list() {
         Session session = sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
-        TypedQuery<RoleEntity> query = session.createQuery("from RoleEntity");
+        TypedQuery<AlbumEntity> query = session.createQuery("from AlbumEntity");
         return query.getResultList();
     }
-
-
 }

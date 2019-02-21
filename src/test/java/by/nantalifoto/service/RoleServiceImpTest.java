@@ -38,7 +38,7 @@ public class RoleServiceImpTest {
 
 //        roleService.delete(8);
 //
-//        List<RoleEntity> roles = roleService.roleList();
+//        List<RoleEntity> roles = roleService.list();
 //        for(RoleEntity role: roles){
 //            System.out.println("Id = "+ role.getId());
 //            System.out.println("Role = "+ role.getRole());

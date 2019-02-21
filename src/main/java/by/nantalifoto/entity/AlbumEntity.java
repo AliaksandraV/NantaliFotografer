@@ -13,16 +13,16 @@ public class AlbumEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "localized_name_id")
-    private LocalizedTextEntity localizedName;
-
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "localized_name_id")
+    private LocalizedTextEntity localizedName;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "photo_category_id", nullable = false)
+    @JoinColumn(name = "photo_category_id")
     private PhotoCategoryEntity photoCategory;
 
     //todo Настройка orphanRemoval=true переводится с английского — "удалять сирот".
@@ -101,7 +101,6 @@ public class AlbumEntity {
                 ", localizedName=" + localizedName +
                 ", date=" + date +
                 ", photoCategory=" + photoCategory +
-                ", photo=" + photo +
                 '}';
     }
 }

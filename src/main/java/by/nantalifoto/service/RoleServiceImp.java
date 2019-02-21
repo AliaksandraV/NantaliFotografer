@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class RoleServiceImp implements RoleService {
 
+    private final RoleDao roleDao;
+
     @Autowired
-    private RoleDao roleDao;
+    public RoleServiceImp(RoleDao roleDao) {
+        this.roleDao = roleDao;
+    }
 
     @Transactional
     @Override
@@ -22,8 +26,8 @@ public class RoleServiceImp implements RoleService {
 
     @Transactional
     @Override
-    public void update(long id, RoleEntity role) {
-        roleDao.update(id, role);
+    public void update(RoleEntity role) {
+        roleDao.update(role);
     }
 
     @Transactional
@@ -40,7 +44,7 @@ public class RoleServiceImp implements RoleService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<RoleEntity> roleList() {
-        return roleDao.roleList();
+    public List<RoleEntity> list() {
+        return roleDao.list();
     }
 }
