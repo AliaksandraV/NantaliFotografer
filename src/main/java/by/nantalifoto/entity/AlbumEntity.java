@@ -21,14 +21,14 @@ public class AlbumEntity {
     @JoinColumn(name = "localized_name_id")
     private LocalizedTextEntity localizedName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "photo_category_id")
     private PhotoCategoryEntity photoCategory;
 
     //todo Настройка orphanRemoval=true переводится с английского — "удалять сирот".
     //todo Если мы удалим из БД — все связанные с ним также будут удалены. Надо подумать нужно ли это указывать
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "albumId")
-    private List<PhotoEntity> photo;
+    private List<PhotoEntity> photoList;
 
 
     public long getId() {
@@ -67,12 +67,12 @@ public class AlbumEntity {
     }
 
 
-    public List<PhotoEntity> getPhoto() {
-        return photo;
+    public List<PhotoEntity> getPhotoList() {
+        return photoList;
     }
 
-    public void setPhoto(List<PhotoEntity> photo) {
-        this.photo = photo;
+    public void setPhotoList(List<PhotoEntity> photo) {
+        this.photoList = photo;
     }
 
 
@@ -85,13 +85,13 @@ public class AlbumEntity {
                 Objects.equals(localizedName, that.localizedName) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(photoCategory, that.photoCategory) &&
-                Objects.equals(photo, that.photo);
+                Objects.equals(photoList, that.photoList);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, localizedName, date, photoCategory, photo);
+        return Objects.hash(id, localizedName, date, photoCategory, photoList);
     }
 
     @Override

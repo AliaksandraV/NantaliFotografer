@@ -15,7 +15,7 @@ public class PhotoEntity {
     private String path;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "album_id", nullable = false)
+    @JoinColumn(name = "album_id")
     private AlbumEntity albumId;
 
 

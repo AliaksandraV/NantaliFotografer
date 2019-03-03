@@ -1,6 +1,6 @@
 package by.nantalifoto.dao;
 
-import by.nantalifoto.entity.LocalizedTextEntity;
+import by.nantalifoto.entity.PhotoEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,45 +10,44 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class LocalizedTextDaoImp implements LocalizedTextDao {
+public class PhotoDaoImp implements PhotoDao {
 
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public LocalizedTextDaoImp(SessionFactory sessionFactory) {
+    public PhotoDaoImp(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public void add(LocalizedTextEntity localizedText) {
+    public void add(PhotoEntity photo) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(localizedText);
+        session.save(photo);
     }
 
     @Override
-    public void update(LocalizedTextEntity localizedText) {
+    public void update(PhotoEntity photo) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(localizedText);
+        session.update(photo);
     }
 
     @Override
     public void delete(long id) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(session.get(LocalizedTextEntity.class, id));
+        session.delete(session.get(PhotoEntity.class, id));
     }
 
     @Override
-    public LocalizedTextEntity get(long id) {
+    public PhotoEntity get(long id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(LocalizedTextEntity.class, id);
+        return session.get(PhotoEntity.class, id);
     }
 
-    //TODO Возможно тут понадобиться список строк с определенным id, ИЛИ тут СПИСКИ вообще НЕ НУЖНЫ
     @Override
-    public List<LocalizedTextEntity> list() {
+    public List<PhotoEntity> list() {
         Session session = sessionFactory.getCurrentSession();
         @SuppressWarnings("unchecked")
-        TypedQuery <LocalizedTextEntity> query = session.createQuery("from LocalizedTextEntity ");
+        TypedQuery<PhotoEntity> query= session.createQuery("from PhotoEntity ");
         return query.getResultList();
     }
 }

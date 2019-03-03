@@ -1,12 +1,8 @@
 package by.nantalifoto;
 
 import by.nantalifoto.config.AppConfig;
-import by.nantalifoto.entity.AlbumEntity;
-import by.nantalifoto.entity.LocalizedTextEntity;
-import by.nantalifoto.entity.RoleEntity;
-import by.nantalifoto.service.AlbumService;
-import by.nantalifoto.service.LocalizedTextService;
-import by.nantalifoto.service.RoleService;
+import by.nantalifoto.entity.*;
+import by.nantalifoto.service.*;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -24,6 +20,8 @@ public class Main {
         RoleService roleService = context.getBean(RoleService.class);
         AlbumService albumService = context.getBean(AlbumService.class);
         LocalizedTextService localizedTextService = context.getBean(LocalizedTextService.class);
+        PhotoCategoryService photoCategoryService = context.getBean(PhotoCategoryService.class);
+        PhotoService photoService = context.getBean(PhotoService.class);
 
         /**CRUD для ROLEENTITY Готов*/
         //TODO Сделать в базе нормальные роли
@@ -63,7 +61,7 @@ public class Main {
 //        album.setDate(new Date());
 //        albumService.update(album);
 //
-//        albumService.delete(1);
+//        albumService.delete(2);
 //
 //        System.out.println(albumService.get(5));
 //
@@ -106,6 +104,62 @@ public class Main {
 //            System.out.println("Текст на английском = "+ localizedTex.getEnglish());
 //            System.out.println("Текст на немецком = "+ localizedTex.getGerman());
 //            System.out.println();
+//        }
+        //TODO ПРОВЕРИТЬ РАБОТУ!!!!
+        /**CRUD для PhotoCategoryEntity*/
+//        PhotoCategoryEntity photoCategory = new PhotoCategoryEntity();
+//        photoCategory.setCoverImagePath("First");
+//        photoCategoryService.add(photoCategory);
+//        photoCategory.setCoverImagePath("Second");
+//        photoCategoryService.add(photoCategory);
+//        photoCategory.setCoverImagePath("third");
+//        photoCategoryService.add(photoCategory);
+//        photoCategory.setCoverImagePath("Fourth");
+//        photoCategoryService.add(photoCategory);
+//
+//        photoCategoryService.delete(4);
+//
+//        photoCategory.setId(4);
+//        photoCategory.setCoverImagePath("rename!!!!");
+//        photoCategoryService.update(photoCategory);
+//
+//        photoCategoryService.get(3);
+//
+//        List<PhotoCategoryEntity> photoCategoryList = photoCategoryService.list();
+//        for (PhotoCategoryEntity photoCategoryEntity: photoCategoryList){
+//            System.out.println("ID = "+photoCategoryEntity.getId());
+//            System.out.println("Cover path = "+photoCategoryEntity.getCoverImagePath());
+//            System.out.println("Name = "+photoCategoryEntity.getLocalizedName());
+//            System.out.println("");
+//        }
+
+        /**CRUD для PhotoEntity*/
+        //TODO Где надо в геттерах добавить проверку на NULL запрашиваемых значений
+        //TODO в CRUD методах delete update get list тоже добавить проверку на NULL - только разобраться делать это надо в дао или сервисе
+//        PhotoEntity photo = new PhotoEntity();
+//        photo.setPath("1");
+//        photoService.add(photo);
+//        photo.setPath("2");
+//        photoService.add(photo);
+//        photo.setPath("3");
+//        photoService.add(photo);
+//        photo.setPath("4");
+//        photoService.add(photo);
+//
+//        photoService.delete(4);
+//
+//        photo.setId(4);
+//        photo.setPath("rename!!!!");
+//        photoService.update(photo);
+//
+//        System.out.println(photoService.get(3));
+//
+//        List<PhotoEntity> photoList = photoService.list();
+//        for (PhotoEntity photoEntity: photoList){
+//            System.out.println("iD = "+photoEntity.getId());
+//            System.out.println("Path = "+photoEntity.getPath());
+//            System.out.println("Album = "+photoEntity.getAlbumId());
+//            System.out.println("");
 //        }
 
         context.close();
